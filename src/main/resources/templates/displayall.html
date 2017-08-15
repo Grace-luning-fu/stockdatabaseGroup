@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<th:block th:each="sales:${allsales}">
+<p th:text="'Username:'+ ${sales.saleuser}"/>
+<p th:text="'Item Code:'+ ${sales.salecode}" />
+<p th:text="'Item:'+ ${sales.saleitem}" />
+<p th:text="'Item #:'+ ${sales.salequantity}" />
+<p th:text="'Price:'+ ${sales.saleprice}" />
+<p th:text="'Tax %:'+ ${sales.tax}" />
+<p th:text="'Subtotal:'+ ${sales.subtotal}" />
+<p th:text="'Total:'+ ${sales.total}" />
+</th:block>
+
+
+<h2>Final receipt</h2>
+<p th:text="${{subtotalall}}"/>
+<p th:text="${{totaltax}}"/>
+<p th:text="${{totalall}}"/>
+
+
+</body>
+</html>

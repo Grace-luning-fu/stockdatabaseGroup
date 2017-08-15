@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Sales Page</title>
+</head>
+<body>
+<h1>StockMarket App.</h1>
+<h2>Add a new sales!</h2>
+<form action="#" th:action="@{/addsale}" th:object="${sales}" method="post">
+    <p>Enter the User : <input type="text" th:field="*{saleuser}" /></p>
+
+
+
+    <p>Enter the code: <input type="text" th:field="*{salecode}" /></p>
+
+    <!--<label>Enter the Item Code</label>-->
+        <!--<option>bd203</option>-->
+        <!--<option>ab207</option>-->
+        <!--<option>cp946</option>-->
+        <!--<option>bn343</option>-->
+        <!--<option>cb666</option>-->
+        <!--<option>wp852</option>-->
+
+
+    <p>Enter the Quantity : <input type="number" th:field="*{salequantity}" /></p>
+
+
+    <p><input type="submit" value="Add to cart" /> <input type="reset" value="Reset" /></p>
+
+</form>
+</body>
+</html>

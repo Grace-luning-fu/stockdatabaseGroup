@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Just Added.</title>
+</head>
+<body>
+<h1>StockMarket App.</h1>
+<h2>Add a new sales!</h2>
+<h1>Result</h1>
+<p th:text="'Username:'+ ${sales.saleuser}"/>
+<p th:text="'Item Code:'+ ${sales.salecode}" />
+<p th:text="'Item:'+ ${sales.saleitem}" />
+<p th:text="'Item #:'+ ${sales.salequantity}" />
+<p th:text="'Price:'+ ${sales.saleprice}" />
+<p th:text="'Tax 6%:'+ ${sales.tax}" />
+<p th:text="'Subtotal:'+ ${sales.subtotal}" />
+<p th:text="'Total:'+ ${sales.total}" />
+<p th:text="'Total all:' + ${{totalall}}"/>
+
+
+<a href="/addsale">Submit another product</a>
+
+
+</body>
+</html>

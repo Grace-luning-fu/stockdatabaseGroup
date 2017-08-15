@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<th:block th:each="products:${allstock}">
+    <p th:text="'Item Id:'+ ${products.id}"/>
+    <p th:text="'Item Name:'+ ${products.item}" />
+    <p th:text="'Item code:'+ ${products.code}" />
+    <p th:text="'Item #:'+ ${products.quantity}" />
+    <p th:text="'Price:'+ ${products.price}" />
+
+</th:block>
+
+
+
+<h1>postive</h1>
+<th:block th:each="ppost:${posstock}">
+    <p th:text="'Item Id:'+ ${ppost.id}"/>
+    <p th:text="'Item Name:'+ ${ppost.item}" />
+    <p th:text="'Item code:'+ ${ppost.code}" />
+    <p th:text="'Item #:'+ ${ppost.quantity}" />
+    <p th:text="'Price:'+ ${ppost.price}" />
+
+</th:block>
+
+
+
+
+<h1>Out Of Stock</h1>
+
+<th:block th:each="nnegs:${negstock}">
+    <p th:text="'Item Id:'+ ${nnegs.id}"/>
+    <p th:text="'Item Name:'+ ${nnegs.item}" />
+    <p th:text="'Item code:'+ ${nnegs.code}" />
+    <p th:text="'Item #:'+ ${nnegs.quantity}" />
+    <p th:text="'Price:'+ ${nnegs.price}" />
+
+</th:block>
+
+
+</body>
+</html>
