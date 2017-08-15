@@ -96,6 +96,29 @@ public class MainController {
 
     }
 
+    @GetMapping("/addprod")
+    public String addNewprod(Model model) {
+        model.addAttribute("stock", new Stock());
+
+        return "addprod";
+
+
+    }
+
+    @PostMapping("/addprod")
+    public String processNewprod(@Valid @ModelAttribute("stock") Stock stock, BindingResult bindingResult) {
+
+        System.out.println(bindingResult.toString());
+
+        if (bindingResult.hasErrors()) {
+            return "addprod";
+        }
+
+        stockRepo.save(stock);
+
+        return "newstockconf";
+
+    }
 
     @GetMapping("/loadstock")
     public String LoadStock()
@@ -152,8 +175,6 @@ public class MainController {
 
     @GetMapping("/displaystock")
     public String displaystock(Model model) {
-        Iterable<Stock> allstock = stockRepo.findAll();
-        model.addAttribute("allstock", allstock);
 
         Iterable<Stock> posstock = stockRepo.findAllByQuantityGreaterThan(0);
         model.addAttribute("posstock", posstock);

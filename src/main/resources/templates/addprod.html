@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Adding new Product.</title>
+</head>
+<body>
+<h1>StockMarket App.</h1>
+<h2>Add a new Product!</h2>
+<form action="#" th:action="@{/addprod}" th:object="${stock}" method="post">
+
+    <p>Enter the Item Name : <input type="text" th:field="*{item}" /></p>
+
+    <p>Enter the code: <input type="text" th:field="*{code}" /></p>
+
+    <p>Enter the Quantity : <input type="number" th:field="*{quantity}" /></p>
+
+    <p>Enter the Price : <input type="number" th:field="*{price}" /></p>
+
+
+    <p><input type="submit" value="Add" /> <input type="reset" value="Reset" /></p>
+
+</form>
+</body>
+</html>
