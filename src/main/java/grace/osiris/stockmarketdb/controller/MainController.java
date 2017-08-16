@@ -9,9 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -39,8 +37,8 @@ public class MainController {
 
         return "addsale";
 
-
     }
+
 
     @PostMapping("/addsale")
     public String processProduct(@Valid @ModelAttribute("sales") Sales sales, BindingResult bindingResult, Model model) {
@@ -92,16 +90,37 @@ public class MainController {
         //save the transcation to the sales repo
         salesRepo.save(sales);
 
-        return "result";
+
+        return "redirect:/shoppinglist";
+    }
+
+    @GetMapping("/shoppinglist")
+    public String shoppingBegin(Model model){
+        model.addAttribute("shop",  salesRepo.findAll());
+        return "shoppinglist";
 
     }
+
+    @RequestMapping("/updatesale/{id}")
+    public String updateShopp(@PathVariable("id") long id, Model model)
+    {
+        model.addAttribute("sales", salesRepo.findOne(id));
+        return "addsale";
+    }
+
+    @RequestMapping("/deletesale/{id}")
+    public String deleteShop(@PathVariable("id") long id)
+    {
+        salesRepo.delete(id);
+        return "redirect:/shoppinglist";
+    }
+
 
     @GetMapping("/addprod")
     public String addNewprod(Model model) {
         model.addAttribute("stock", new Stock());
 
         return "addprod";
-
 
     }
 
@@ -116,9 +135,35 @@ public class MainController {
 
         stockRepo.save(stock);
 
-        return "newstockconf";
+        return "redirect:/list";
 
     }
+
+
+    @GetMapping("/list")
+    public String liststock(Model model)
+    {
+        Iterable<Stock> stocklist = stockRepo.findAll();
+        model.addAttribute("stocklist", stocklist);
+        return "list";
+    }
+
+    @RequestMapping("/update/{id}")
+    public String updatestock(@PathVariable("id") long id, Model model)
+    {
+      model.addAttribute("stock", stockRepo.findOne(id));
+      return "addprod";
+    }
+
+    @RequestMapping("/delete/{id}")
+    public String updatestock(@PathVariable("id") long id)
+    {
+        stockRepo.delete(id);
+        return "redirect:/list";
+    }
+
+
+
 
     @GetMapping("/loadstock")
     public String LoadStock()
@@ -168,6 +213,7 @@ public class MainController {
      model.addAttribute("totalall", totalall);
         model.addAttribute("totaltax", totaltax);
         model.addAttribute("subtotalall", subtotalall);
+
      return "displayall";
 
 

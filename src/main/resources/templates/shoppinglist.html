@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Just Added.</title>
+</head>
+<body>
+<h1>StockMarket App.</h1>
+<h2>Add a new sales!</h2>
+<h1>Result</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>User</th>
+        <th>ItemCode</th>
+        <th>ItemName</th>
+        <th>ItemQuantity</th>
+        <th>ItemPrice</th>
+    </tr>
+    </thead>
+    <!--<th:block th:each="mod:${shopmod}">-->
+    <tbody>
+        <tr th:each="item:${shop}">
+            <td th:text="${item.saleuser}"></td>
+            <td th:text="${item.salecode}"></td>
+            <td th:text="${item.saleitem}"></td>
+            <td th:text="${item.salequantity}"></td>
+            <td th:text="${item.saleprice}"></td>
+            <td>
+                <a th:href="@{/updatesale/{id}(id=${item.id})}">Update</a>
+                <a th:href="@{/deletesale/{id}(id=${item.id})}">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+    <!--</th:block>-->
+</table>
+
+
+<!--<p th:text="'Tax 6%:'+ ${sales.tax}" />-->
+<!--<p th:text="'Subtotal:'+ ${sales.subtotal}" />-->
+<!--<p th:text="'Total:'+ ${sales.total}" />-->
+<!--<p th:text="'Total all:' + ${{totalall}}"/>-->
+
+
+<!--<a href="/addsale">Submit another product</a>-->
+
+
+</body>
+</html>

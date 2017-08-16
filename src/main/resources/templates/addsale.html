@@ -8,15 +8,14 @@
 <h1>StockMarket App.</h1>
 <h2>Add a new sales!</h2>
 <form action="#" th:action="@{/addsale}" th:object="${sales}" method="post">
+
+    <p><input type="hidden" th:field="*{id}"/></p>
+
     <p>Enter the User : <input type="text" th:field="*{saleuser}" /></p>
-
-
 
     <p>Enter the code: <input type="text" th:field="*{salecode}" /></p>
 
-
     <p>Enter the Quantity : <input type="number" th:field="*{salequantity}" /></p>
-
 
     <p><input type="submit" value="Add to cart" /> <input type="reset" value="Reset" /></p>
 

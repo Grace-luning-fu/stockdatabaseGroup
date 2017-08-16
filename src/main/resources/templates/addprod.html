@@ -9,6 +9,8 @@
 <h2>Add a new Product!</h2>
 <form action="#" th:action="@{/addprod}" th:object="${stock}" method="post">
 
+    <p><input type="hidden" th:field="*{id}"/></p>
+
     <p>Enter the Item Name : <input type="text" th:field="*{item}" /></p>
 
     <p>Enter the code: <input type="text" th:field="*{code}" /></p>
